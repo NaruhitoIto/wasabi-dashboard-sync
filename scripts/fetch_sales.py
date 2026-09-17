@@ -46,7 +46,7 @@ def fetch_qty(d):
         r.raise_for_status()
         payload = r.json()
         for o in payload["data"]:
-            shop = o["shop_id"]
+            shop = int(o["shop_id"])
             for od in o.get("order_details", []):
                 q = int(float(od.get("quantity", 0)))
                 qty_by_shop[shop] = qty_by_shop.get(shop, 0) + q

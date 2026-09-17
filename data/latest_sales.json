@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-17T14:15:53Z",
+  "generated_at": "2026-09-17T18:56:31Z",
   "docs": {
     "2026-09-14": {
       "date": "2026-09-14",
-      "ordered_total": 4833871,
-      "ordered_count": 3076,
+      "ordered_total": 4833034,
+      "ordered_count": 3074,
       "ordered_qty": 3096,
       "shipped_total": 5493269,
       "shipped_count": 3486,
@@ -95,7 +95,7 @@
         },
         {
           "id": 31,
-          "ordered": 652663,
+          "ordered": 651826,
           "shipped": 595342,
           "qty": 787
         },
@@ -121,8 +121,8 @@
     },
     "2026-09-15": {
       "date": "2026-09-15",
-      "ordered_total": 3765773,
-      "ordered_count": 3449,
+      "ordered_total": 3764520,
+      "ordered_count": 3448,
       "ordered_qty": 3472,
       "shipped_total": 5898374,
       "shipped_count": 3226,
@@ -141,7 +141,7 @@
         },
         {
           "id": 5,
-          "ordered": 1948664,
+          "ordered": 1947411,
           "shipped": 1741820,
           "qty": 1745
         },
@@ -357,17 +357,17 @@
     },
     "2026-09-17": {
       "date": "2026-09-17",
-      "ordered_total": 2422640,
-      "ordered_count": 2503,
-      "ordered_qty": 2515,
+      "ordered_total": 2699438,
+      "ordered_count": 2728,
+      "ordered_qty": 2739,
       "shipped_total": 4853723,
       "shipped_count": 3412,
       "shops": [
         {
           "id": 1,
-          "ordered": 435713,
+          "ordered": 461443,
           "shipped": 617386,
-          "qty": 487
+          "qty": 499
         },
         {
           "id": 4,
@@ -377,9 +377,9 @@
         },
         {
           "id": 5,
-          "ordered": 1378919,
+          "ordered": 1609889,
           "shipped": 1964397,
-          "qty": 1230
+          "qty": 1411
         },
         {
           "id": 6,
@@ -449,9 +449,9 @@
         },
         {
           "id": 31,
-          "ordered": 566822,
+          "ordered": 586920,
           "shipped": 624674,
-          "qty": 759
+          "qty": 790
         },
         {
           "id": 32,

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T20:30:10Z",
+  "generated_at": "2026-09-19T22:52:41Z",
   "docs": {
     "2026-09-16": {
       "date": "2026-09-16",
@@ -357,9 +357,9 @@
     },
     "2026-09-19": {
       "date": "2026-09-19",
-      "ordered_total": 4842368,
-      "ordered_count": 3256,
-      "ordered_qty": 3270,
+      "ordered_total": 4941984,
+      "ordered_count": 3342,
+      "ordered_qty": 3356,
       "shipped_total": 5110699,
       "shipped_count": 3243,
       "shops": [
@@ -377,9 +377,9 @@
         },
         {
           "id": 5,
-          "ordered": 1781226,
+          "ordered": 1880842,
           "shipped": 1548516,
-          "qty": 1658
+          "qty": 1744
         },
         {
           "id": 6,

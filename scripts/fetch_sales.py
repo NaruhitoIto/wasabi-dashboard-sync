@@ -1,7 +1,7 @@
 import os
 import time
 import json
-from datetime import date, timedelta
+from datetime import datetime, timedelta, timezone
 
 import requests
 
@@ -10,32 +10,54 @@ AUTH = os.environ["WASABI_AUTH"]
 HEADERS = {"Authorization": f"Bearer {AUTH}"}
 SHOP_IDS = [1, 4, 5, 6, 8, 11, 20, 22, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]
 WINDOW_DAYS = 4
+JST = timezone(timedelta(hours=9))
+RETRIES = 5
+
+
+def request_with_retry(method, url, **kwargs):
+    """Retry on timeouts, connection errors, 429 and 5xx with exponential backoff."""
+    for attempt in range(1, RETRIES + 1):
+        try:
+            r = requests.request(method, url, headers=HEADERS, **kwargs)
+            if r.status_code == 429 or r.status_code >= 500:
+                raise requests.HTTPError(f"{r.status_code} for {url}", response=r)
+            r.raise_for_status()
+            return r
+        except (requests.Timeout, requests.ConnectionError, requests.HTTPError) as e:
+            status = getattr(getattr(e, "response", None), "status_code", None)
+            if status is not None and status < 500 and status != 429:
+                raise  # 4xx other than 429: retrying will not help
+            if attempt == RETRIES:
+                raise
+            wait = 2 ** attempt
+            print(f"retry {attempt}/{RETRIES - 1} after {wait}s: {e}")
+            time.sleep(wait)
 
 
 def daterange():
-    today = date.today()
+    today = datetime.now(JST).date()
     return [(today - timedelta(days=i)).isoformat() for i in range(WINDOW_DAYS)][::-1]
 
 
 def fetch_totals(endpoint, start, end):
-    r = requests.get(
+    r = request_with_retry(
+        "GET",
         f"{BASE}/api/total/{endpoint}",
-        headers=HEADERS,
         params={"start_date": start, "end_date": end},
         timeout=30,
     )
-    r.raise_for_status()
     return {row["date"]: row for row in r.json()}
 
 
 def fetch_qty(d):
     qty_by_shop = {}
+    count_by_shop = {}
     total_qty = 0
     page = 1
     while True:
-        r = requests.post(
+        r = request_with_retry(
+            "POST",
             f"{BASE}/api/orders/search",
-            headers=HEADERS,
             json={
                 "limit": 1000,
                 "page": page,
@@ -43,10 +65,10 @@ def fetch_qty(d):
             },
             timeout=60,
         )
-        r.raise_for_status()
         payload = r.json()
         for o in payload["data"]:
             shop = int(o["shop_id"])
+            count_by_shop[shop] = count_by_shop.get(shop, 0) + 1
             for od in o.get("order_details", []):
                 q = int(float(od.get("quantity", 0)))
                 qty_by_shop[shop] = qty_by_shop.get(shop, 0) + q
@@ -55,7 +77,7 @@ def fetch_qty(d):
             break
         page += 1
         time.sleep(0.4)
-    return total_qty, qty_by_shop
+    return total_qty, qty_by_shop, count_by_shop
 
 
 def main():
@@ -69,7 +91,7 @@ def main():
         s = shipped.get(d)
         if not o or not s:
             continue
-        total_qty, qty_by_shop = fetch_qty(d)
+        total_qty, qty_by_shop, count_by_shop = fetch_qty(d)
         o_shop = {x["shop_id"]: int(x["total"]) for x in o["shops"]}
         s_shop = {x["shop_id"]: int(x["total"]) for x in s["shops"]}
         shops = [
@@ -78,6 +100,7 @@ def main():
                 "ordered": o_shop.get(sid, 0),
                 "shipped": s_shop.get(sid, 0),
                 "qty": qty_by_shop.get(sid, 0),
+                "count": count_by_shop.get(sid, 0),
             }
             for sid in SHOP_IDS
         ]

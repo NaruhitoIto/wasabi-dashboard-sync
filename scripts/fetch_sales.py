@@ -9,7 +9,7 @@ BASE = "https://world-switch.com/kaitoriouji/ext"
 AUTH = os.environ["WASABI_AUTH"]
 HEADERS = {"Authorization": f"Bearer {AUTH}"}
 SHOP_IDS = [1, 4, 5, 6, 8, 11, 20, 22, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]
-WINDOW_DAYS = 4
+WINDOW_DAYS = int(os.environ.get("WINDOW_DAYS") or 4)
 JST = timezone(timedelta(hours=9))
 RETRIES = 5
 

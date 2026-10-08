@@ -3,7 +3,12 @@ name: Sync WASABI sales data
 on:
   schedule:
     - cron: '17 * * * *'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: 'Days to fetch (default 4)'
+        required: false
+        default: '4'
 
 permissions:
   contents: write
@@ -23,6 +28,7 @@ jobs:
       - run: python scripts/fetch_sales.py
         env:
           WASABI_AUTH: ${{ secrets.WASABI_AUTH }}
+          WINDOW_DAYS: ${{ github.event.inputs.window_days }}
 
       - run: |
           git config user.name "github-actions[bot]"

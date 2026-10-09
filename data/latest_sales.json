@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T15:19:45Z",
+  "generated_at": "2026-10-09T20:56:17Z",
   "docs": {
     "2026-10-07": {
       "date": "2026-10-07",
@@ -139,8 +139,8 @@
     },
     "2026-10-08": {
       "date": "2026-10-08",
-      "ordered_total": 5333946,
-      "ordered_count": 3459,
+      "ordered_total": 5333431,
+      "ordered_count": 3458,
       "ordered_qty": 3481,
       "shipped_total": 3870940,
       "shipped_count": 3172,
@@ -161,7 +161,7 @@
         },
         {
           "id": 5,
-          "ordered": 1795247,
+          "ordered": 1794732,
           "shipped": 1842711,
           "qty": 1641,
           "count": 1502
@@ -275,15 +275,15 @@
     },
     "2026-10-09": {
       "date": "2026-10-09",
-      "ordered_total": 4243608,
-      "ordered_count": 2839,
-      "ordered_qty": 2848,
+      "ordered_total": 4385707,
+      "ordered_count": 2989,
+      "ordered_qty": 2998,
       "shipped_total": 4549317,
       "shipped_count": 3400,
       "shops": [
         {
           "id": 1,
-          "ordered": 454797,
+          "ordered": 456995,
           "shipped": 713813,
           "qty": 506,
           "count": 390
@@ -297,10 +297,10 @@
         },
         {
           "id": 5,
-          "ordered": 1589712,
+          "ordered": 1729613,
           "shipped": 1759568,
-          "qty": 1334,
-          "count": 1254
+          "qty": 1484,
+          "count": 1383
         },
         {
           "id": 6,
@@ -411,18 +411,18 @@
     },
     "2026-10-10": {
       "date": "2026-10-10",
-      "ordered_total": 26804,
-      "ordered_count": 32,
-      "ordered_qty": 32,
+      "ordered_total": 288857,
+      "ordered_count": 275,
+      "ordered_qty": 276,
       "shipped_total": 0,
       "shipped_count": 0,
       "shops": [
         {
           "id": 1,
-          "ordered": 0,
+          "ordered": 103680,
           "shipped": 0,
-          "qty": 7,
-          "count": 7
+          "qty": 111,
+          "count": 75
         },
         {
           "id": 4,
@@ -433,10 +433,10 @@
         },
         {
           "id": 5,
-          "ordered": 0,
+          "ordered": 77466,
           "shipped": 0,
-          "qty": 0,
-          "count": 0
+          "qty": 53,
+          "count": 51
         },
         {
           "id": 6,
@@ -447,10 +447,10 @@
         },
         {
           "id": 8,
-          "ordered": 0,
+          "ordered": 12650,
           "shipped": 0,
-          "qty": 0,
-          "count": 0
+          "qty": 1,
+          "count": 1
         },
         {
           "id": 11,
@@ -468,17 +468,17 @@
         },
         {
           "id": 22,
-          "ordered": 814,
+          "ordered": 3720,
           "shipped": 0,
-          "qty": 1,
-          "count": 1
+          "qty": 4,
+          "count": 4
         },
         {
           "id": 25,
-          "ordered": 1364,
+          "ordered": 8802,
           "shipped": 0,
-          "qty": 1,
-          "count": 1
+          "qty": 9,
+          "count": 4
         },
         {
           "id": 26,
@@ -517,10 +517,10 @@
         },
         {
           "id": 31,
-          "ordered": 24626,
+          "ordered": 82539,
           "shipped": 0,
-          "qty": 23,
-          "count": 23
+          "qty": 98,
+          "count": 98
         },
         {
           "id": 32,
